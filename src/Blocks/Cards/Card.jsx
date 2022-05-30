@@ -12,7 +12,16 @@ const Card = ({ data, id, item }) => {
   ]);
 
   return (
-    <UiCard fluid={data.fluid ?? true} className={cx(item.theme || data.theme)}>
+    <UiCard
+      fluid={data.fluid ?? true}
+      className={cx(
+        {
+          rounded: data.rounded,
+        },
+        item.theme || data.theme,
+        data.rounded ? data.roundedSize || 'small' : null,
+      )}
+    >
       {image && <Image wrapped ui={false} src={image} alt={item.title} />}
       <UiCard.Content>
         {title && <UiCard.Header>{title}</UiCard.Header>}

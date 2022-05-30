@@ -17,7 +17,7 @@ const Edit = (props) => {
 
   const RenderVariation = variation?.edit || View;
 
-  const schema = useMemo(() => getSchema(), []);
+  const schema = useMemo(() => getSchema(props), [props]);
 
   return (
     <>

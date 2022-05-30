@@ -79,7 +79,8 @@ function getCardSchema() {
   };
 }
 
-export default function () {
+export default function (props) {
+  const { data = {} } = props;
   return {
     title: 'Cards',
     fieldsets: [
@@ -88,7 +89,16 @@ export default function () {
         title: 'Default',
         fields: ['items'],
       },
-      { id: 'settings', title: 'Settings', fields: ['fluid', 'theme'] },
+      {
+        id: 'settings',
+        title: 'Card settings',
+        fields: [
+          'fluid',
+          'rounded',
+          ...(data.rounded ? ['roundedSize'] : []),
+          'theme',
+        ],
+      },
     ],
     properties: {
       items: {
@@ -101,6 +111,18 @@ export default function () {
         title: 'Fluid',
         type: 'boolean',
         defaultValue: true,
+      },
+      rounded: {
+        title: 'Rounded',
+        type: 'boolean',
+      },
+      roundedSize: {
+        title: 'Size',
+        choices: [
+          ['small', 'Small'],
+          ['big', 'Big'],
+        ],
+        default: 'small',
       },
       theme: {
         title: 'Theme',
