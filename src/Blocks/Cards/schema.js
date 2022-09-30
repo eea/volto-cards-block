@@ -87,16 +87,12 @@ export default function (props) {
       {
         id: 'default',
         title: 'Default',
-        fields: ['items'],
-      },
-      {
-        id: 'settings',
-        title: 'Card settings',
         fields: [
           'fluid',
           'rounded',
           ...(data.rounded ? ['roundedSize'] : []),
           'theme',
+          'items',
         ],
       },
     ],
